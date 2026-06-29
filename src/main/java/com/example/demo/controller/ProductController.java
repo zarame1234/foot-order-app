@@ -20,20 +20,20 @@ public class ProductController {
     this.productService = productService;
   }
   
-   @GetMapping("/products")
-    public String showProducts(Model model) {
-        model.addAttribute("products", productService.getProducts());
-        return "products";
-    }
+  @GetMapping("/products")
+  public String showProducts(Model model) {
+    model.addAttribute("products", productService.getProducts());
+    return "products";
+  }
 
-    @GetMapping("/products/{id}")
+  @GetMapping("/products/{id}")
     public Product getProduct(@PathVariable Long id) {
-      return productService.getProductById(id);
-    } 
+    return productService.getProductById(id);
+  } 
 
-    @PostMapping("/products")
-    public String saveProduct(Product product) {
-      productService.saveProduct(product);
-      return "redirect:/products";
-    }
+  @PostMapping("/products")
+  public String saveProduct(Product product) {
+    productService.saveProduct(product);
+    return "redirect:/products";
+  }
 }
