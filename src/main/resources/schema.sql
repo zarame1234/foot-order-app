@@ -5,3 +5,10 @@ CREATE TABLE product (
   name VARCHAR(100),
   price INT
 );
+
+CREATE TABLE orders (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  productId BIGINT,
+  quantity INT
+  order_date DATETIME
+);

@@ -1,15 +1,25 @@
 package com.example.demo.entity;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Order {
 
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   private Long productId;
+  private int quantity; 
+  private LocalDateTime orderDate;
 
+  public Order() {
+  }
+ 
   public Order(long id, Long productId) {
     this.id = id;
     this.productId = productId;
@@ -21,5 +31,13 @@ public class Order {
 
   public long getProductId() {
     return productId;
+  }
+
+  public int getQuanity() {
+    return quantity;
+  }
+
+  public LocalDateTime getOrderDate() {
+    return orderDate;
   }
 }
