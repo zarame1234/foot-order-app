@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import com.example.demo.service.OrderService;
+
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.example.demo.entity.Order;
 
@@ -17,8 +19,9 @@ public class OrderController {
   }
 
   @GetMapping("/orders")
-  public List<Order> getOrders() {
-      return orderService.getOrders();
+  public String showOrders(Model model) {
+      List<Order> orders = orderService.getOrders();
+      model.addAttribute("orders", orders);
+      return "orders";
   }
-  
 }
