@@ -26,6 +26,7 @@ public class ProductController {
     return "products";
   }
 
+  //注文詳細画面表示
   @GetMapping("/products/{id}")
     public  String showProductDatail(@PathVariable Long id, Model model) {
       model.addAttribute("product", productService.getProductById(id));
