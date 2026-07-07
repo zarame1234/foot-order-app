@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS product;
+DROP TABLE IF EXISTS orders;
 
 CREATE TABLE product (
   id BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -9,6 +10,6 @@ CREATE TABLE product (
 CREATE TABLE orders (
   id BIGINT AUTO_INCREMENT PRIMARY KEY,
   productId BIGINT,
-  quantity INT
+  quantity INT,
   order_date DATETIME
 );

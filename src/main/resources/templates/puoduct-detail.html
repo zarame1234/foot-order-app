@@ -9,21 +9,17 @@
 <body>
   <h1>商品詳細</h1>
   <div class="card">
-    <p>
-      <strong>商品名：</strong>
-      コーヒー
-    </p>
-    <p>
-      <strong>価格：</strong>
-      500 円
-    </p>
-    <p>
-      <strong>数量：</strong>
-      <input type="number" value="1" min="1">
-    </p>
+    <form action = "/cart" method = "post">
+    <p>商品名</p>
+    <span th:text = "${product.name}"></span>
+    <p>価格：</p>
+    <span th:text = "${product.price}" + "円"></span>
+    <p>数量：</p>
+    <input type="number" name="quantity" value="1" min="1"> 
 
-    <button>カートに追加</button>
+    <button type = "submit">カートに追加</button>
     <button class="back">一覧へ戻る</button>
+    </form>
   </div>
 </body>
 

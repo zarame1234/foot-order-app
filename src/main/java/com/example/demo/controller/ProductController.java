@@ -3,10 +3,8 @@ package com.example.demo.controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.example.demo.entity.Product;
 import com.example.demo.service.ProductService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import com.example.demo.form.ProductForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -23,6 +21,7 @@ public class ProductController {
   @GetMapping("/products")
   public String showProducts(Model model) {
     model.addAttribute("products", productService.getProducts());
+    model.addAttribute("ProductForm", new ProductForm());
     return "products";
   }
 
@@ -33,9 +32,11 @@ public class ProductController {
     return "product-detail";
   } 
 
+  /*商品登録は別で作成予定
   @PostMapping("/products")
-  public String saveProduct(Product product) {
-    productService.saveProduct(product);
+  public String saveProduct(ProductForm  productForm) {
+    productService.saveProduct(productForm);
     return "redirect:/products";
   }
+  */
 }
