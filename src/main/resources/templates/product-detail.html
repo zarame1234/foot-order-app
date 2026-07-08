@@ -6,9 +6,14 @@
 </head>
 <body>
   <h1>商品詳細</h1>
-  <p>商品ID：<span th:text="${product.id}"></span></p>
   <p>商品名：<span th:text="${product.name}"></span></p>
   <p>価格：<span th:text="${product.price}"></span></p>
+  <form th:action = "@{/cart}" method = "post">
+    <input type="hidden" name="productId" th:value="${product.id}">
+    <label>数量</label>
+    <input type="number" name="quantity" value="1" min="1">
+    <button type="submit">カート追加</button>
+  </form>
   <a th:href="@{/products}">
     一覧へ戻る
   </a>
