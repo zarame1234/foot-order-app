@@ -6,6 +6,7 @@ import java.util.List;
 import com.example.demo.repository.CartRepository;
 import com.example.demo.repository.ProductRepository;
 import com.example.demo.form.CartForm;
+import com.example.demo.form.UpdateCartForm;
 import com.example.demo.entity.Cart;
 import com.example.demo.entity.Product;
 
@@ -39,9 +40,12 @@ public class CartService {
    */
   public List<Cart> getCartList() {
     return cartRepository.findAll();
-}
+  }
 
-
-
-
+  public void updateCart(UpdateCartForm form) {
+    Cart cart = cartRepository.findById(form.getCartId())
+            .orElseThrow(() -> new RuntimeException("カートが存在しません"));
+    cart.setQuantity(form.getQuantity());
+    cartRepository.save(cart);
+  }
 }
