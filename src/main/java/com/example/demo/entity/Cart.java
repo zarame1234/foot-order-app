@@ -4,21 +4,27 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Cart {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  private Long productId;
+
+  @ManyToOne
+  @JoinColumn(name = "product_id")
+  private Product product;
+
   private Integer quantity;
 
   public Long getId() {
     return id;
   }
 
-  public Long getProductId() {
-    return productId;
+  public Product getProductId() {
+    return product;
   }
 
   public Integer getQuantity() {
@@ -29,8 +35,8 @@ public class Cart {
     this.id = id;
   }
 
-  public void setProductId(Long productId) {
-    this.productId = productId;
+  public void setProduct(Product product) {
+    this.product = product;
   }
 
   public void setQuantity(Integer quantity) {
