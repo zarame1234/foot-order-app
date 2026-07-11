@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.demo.service.ProductService;
+import com.example.demo.form.CartForm;
 import com.example.demo.form.ProductForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +30,7 @@ public class ProductController {
   @GetMapping("/products/{id}")
     public  String showProductDatail(@PathVariable Long id, Model model) {
       model.addAttribute("product", productService.getProductById(id));
+      model.addAttribute("cartForm", new CartForm());
     return "product-detail";
   } 
 
