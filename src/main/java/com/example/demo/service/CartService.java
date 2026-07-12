@@ -59,4 +59,11 @@ public class CartService {
   public void deleteCartProduct(Long cartId) {
     cartRepository.deleteById(cartId);
   }
+
+  /**
+   * カート内商品を全削除する
+   */
+  public void deleteAllCart() {
+    cartRepository.deleteAll();
+  }
 }

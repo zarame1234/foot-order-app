@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <title>カート</title>
   </head>
+
   <body>
     <h1>カート一覧</h1>
+    <form th:action="@{/cart/deleteAll}" method="post"
+          onsubmit="return confirm('カート内の商品をすべて削除しますか？');">
+      <button type="submit">カートクリア</button>
+    </form>
     <table border="1">
       <thead>
         <tr>
@@ -15,6 +20,7 @@
           <th></th>
         </tr>
       </thead>
+
     <tbody>
       <tr th:each="cart : ${cartItems}">
         <td th:text="${cart.product.name}"></td>
@@ -39,4 +45,5 @@
     <a th:href="@{/products}">戻る</a>
     <button>購入へ進む</button>
   </body>
+
 </html>
