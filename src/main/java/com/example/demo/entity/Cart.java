@@ -23,7 +23,7 @@ public class Cart {
     return id;
   }
 
-  public Product getProductId() {
+  public Product getProduct() {
     return product;
   }
 

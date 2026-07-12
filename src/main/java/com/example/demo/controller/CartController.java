@@ -9,9 +9,6 @@ import com.example.demo.form.CartForm;
 import com.example.demo.entity.Cart;
 import com.example.demo.service.CartService;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-
 @Controller
 public class CartController {
   public final CartService cartService;
