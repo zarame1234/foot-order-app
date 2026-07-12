@@ -9,17 +9,20 @@
 <body>
   <h1>商品詳細</h1>
   <div class="card">
-    <form action = "/cart" method = "post">
+    <form th:action = "/cart" th:object = "${cartForm}" method = "post">
+    <input type = "hidden" th:field = "*{productId}" th:value="${product.id}">
+
     <p>商品名</p>
-    <span th:text = "${product.name}"></span>
-    <p>価格：</p>
-    <span th:text = "${product.price}" + "円"></span>
-    <p>数量：</p>
-    <input type="number" name="quantity" value="1" min="1"> 
+    <span th:text="${product.name}"></span>
+    <p>価格</p>
+    <span th:text="${product.price} + '円'"></span>
+    <p>数量</p>
+    <input type="number" th:field="*{quantity}" min="1">
 
     <button type = "submit">カートに追加</button>
-    <button class="back">一覧へ戻る</button>
     </form>
+
+    <a th:href="@{/products}">一覧へ戻る</a>
   </div>
 </body>
 

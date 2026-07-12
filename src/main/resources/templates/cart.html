@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>カート</title>
+  </head>
+
+  <body>
+    <h1>カート一覧</h1>
+    <form th:action="@{/cart/deleteAll}" method="post"
+          onsubmit="return confirm('カート内の商品をすべて削除しますか？');">
+      <button type="submit">カートクリア</button>
+    </form>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>価格</th>
+          <th>数量</th>
+          <th></th>
+        </tr>
+      </thead>
+
+    <tbody>
+      <tr th:each="cart : ${cartItems}">
+        <td th:text="${cart.product.name}"></td>
+        <td th:text="${cart.product.price}"></td>
+        <td>
+          <form th:action="@{/cart/update}" method="post">
+            <input type="hidden" name="cartId" th:value="${cart.id}">
+            <input type="number" name="quantity" th:value="${cart.quantity}" min="1">
+           <button type="submit">更新</button> 
+        </form>
+        </td>
+        <td>
+          <form th:action="@{/cart/delete}" method="post">
+            <input type="hidden" name="cartId" th:value="${cart.id}">
+            <button type="submit">削除</button>
+          </form>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+    <br>
+    <a th:href="@{/products}">戻る</a>
+    <button>購入へ進む</button>
+  </body>
+
+</html>
