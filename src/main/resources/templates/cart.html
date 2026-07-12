@@ -20,14 +20,17 @@
         <td th:text="${cart.product.name}"></td>
         <td th:text="${cart.product.price}"></td>
         <td>
-        <form th:action="@{/cart/update}" method="post">
-          <input type="hidden" name="cartId" th:value="${cart.id}">
-          <input type="number" name="quantity" th:value="${cart.quantity}" min="1">
-         <button type="submit">更新</button> 
+          <form th:action="@{/cart/update}" method="post">
+            <input type="hidden" name="cartId" th:value="${cart.id}">
+            <input type="number" name="quantity" th:value="${cart.quantity}" min="1">
+           <button type="submit">更新</button> 
         </form>
         </td>
         <td>
-          <button>削除</button>
+          <form th:action="@{/cart/delete}" method="post">
+            <input type="hidden" name="cartId" th:value="${cart.id}">
+            <button type="submit">削除</button>
+          </form>
         </td>
       </tr>
     </tbody>

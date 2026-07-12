@@ -41,11 +41,22 @@ public class CartService {
   public List<Cart> getCartList() {
     return cartRepository.findAll();
   }
-
+  /**
+   * カート内商品数量を更新する
+   * @param form
+   */
   public void updateCart(UpdateCartForm form) {
     Cart cart = cartRepository.findById(form.getCartId())
             .orElseThrow(() -> new RuntimeException("カートが存在しません"));
     cart.setQuantity(form.getQuantity());
     cartRepository.save(cart);
+  }
+
+  /**
+   * カート内商品を削除する
+   * @param cartId 削除対象のカートID
+   */
+  public void deleteCartProduct(Long cartId) {
+    cartRepository.deleteById(cartId);
   }
 }
