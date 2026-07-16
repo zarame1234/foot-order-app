@@ -10,13 +10,15 @@ CREATE TABLE product (
 
 CREATE TABLE orders (
   id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  productId BIGINT,
+  product_id BIGINT,
   quantity INT,
-  order_date DATETIME
+  order_date DATETIME,
+  FOREIGN KEY (product_id) REFERENCES product(id)
 );
 
 CREATE TABLE cart (
   id BIGINT AUTO_INCREMENT PRIMARY KEY,
   product_id BIGINT,
-  quantity INT
+  quantity INT,
+  FOREIGN KEY (product_id) REFERENCES product(id)
 );
