@@ -42,22 +42,11 @@ public class OrderController {
   public String complete() {
     return "order-complete";
   }
-}
   
-/*注文履歴
-@RestController
-public class OrderController {
-
-  private final OrderService orderService;
-  public OrderController(OrderService orderService) {
-    this.orderService = orderService;
+  @GetMapping("/orders/history")
+  public String showOrdersHsitory(Model model) {
+    model.addAttribute("orders", orderService.getOrderList());
+    return "order-history";
   }
-
-  @GetMapping("/orders")
-  public String showOrders(Model model) {
-      List<Order> orders = orderService.getOrders();
-      model.addAttribute("orders", orders);
-      return "orders";
-  }
-*/
+}
 
