@@ -8,13 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.demo.service.ProductService;
 import com.example.demo.service.CartService;
 import com.example.demo.form.CartForm;
-import com.example.demo.form.ProductForm;
-import com.example.demo.form.UpdateCartForm;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
-
 
 @Controller
 public class ProductController {
@@ -29,7 +25,6 @@ public class ProductController {
   @GetMapping("/products")
   public String showProducts(Model model) {
     model.addAttribute("products", productService.getProducts());
-    model.addAttribute("ProductForm", new ProductForm());
     return "products";
   }
 
