@@ -33,11 +33,23 @@ public class Order {
     return productId;
   }
 
-  public int getQuanity() {
+  public int getQuantity() {
     return quantity;
   }
 
   public LocalDateTime getOrderDate() {
     return orderDate;
+  }
+
+  public void setProductId(Long productId) {
+    this.productId = productId;
+  }
+
+  public void setQuantity(int quantity) {
+    this.quantity = quantity;
+  }
+
+  public void setOrderDate(LocalDateTime orderDate) {
+    this.orderDate = orderDate;
   }
 }

@@ -2,11 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>カート</title>
+    <title>注文確認画面</title>
 </head>
 
 <body>
-<h1>カート一覧</h1>
+<h1>注文確認</h1>
 <form th:action="@{/cart/deleteAll}" method="post"
       onsubmit="return confirm('カート内の商品をすべて削除しますか？');">
     <button type="submit">カートクリア</button>
@@ -49,8 +49,8 @@
   <a th:href="@{/products}">
     商品一覧へ戻る
   </a>
-  <a th:href="@{/orders}">
-    購入へ進む
-  </a>
+  <form th:action="@{/orders}" method="post">
+    <button type="submit">注文確定</button>
+</form>
 </body>
 </html>
