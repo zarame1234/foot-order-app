@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>注文完了</title>
+</head>
+<body>
+  <h1>ご注文ありがとうございました</h1>
+  <p>ご注文を受け付けました。</p>
+  <hr>
+  <p>
+    ご利用ありがとうございました。<br>
+    またのご利用をお待ちしております。
+  </p>
+  <br>
+
+  <a th:href="@{/products}">      
+    <button type="button">商品一覧へ戻る</button>
+  </a>
+
+  <a th:href="@{/orders/history}">
+    <button type="button">注文履歴を見る</button>
+  </a>
+
+</body>
+</html>
