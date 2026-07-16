@@ -22,7 +22,7 @@ public class CartService {
 
   /**
    * カートへ商品を追加する
-   * @param cartForm
+   * @param cartForm 商品詳細画面から受け取ったカート情報
    */
   public void addCart(CartForm cartForm) {
      Cart cart = new Cart();
@@ -43,7 +43,7 @@ public class CartService {
   }
   /**
    * カート内商品数量を更新する
-   * @param form
+   * @param form 更新するカート情報
    */
   public void updateCart(UpdateCartForm form) {
     Cart cart = cartRepository.findById(form.getCartId())

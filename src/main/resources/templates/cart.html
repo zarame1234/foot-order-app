@@ -1,49 +1,65 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
+<head>
     <meta charset="UTF-8">
     <title>カート</title>
-  </head>
+</head>
 
-  <body>
-    <h1>カート一覧</h1>
-    <form th:action="@{/cart/deleteAll}" method="post"
-          onsubmit="return confirm('カート内の商品をすべて削除しますか？');">
-      <button type="submit">カートクリア</button>
-    </form>
-    <table border="1">
-      <thead>
+<body>
+
+<h1>カート一覧</h1>
+
+<form th:action="@{/cart/deleteAll}" method="post"
+      onsubmit="return confirm('カート内の商品をすべて削除しますか？');">
+    <button type="submit">カートクリア</button>
+</form>
+
+<table border="1">
+    <thead>
         <tr>
-          <th>商品名</th>
-          <th>価格</th>
-          <th>数量</th>
-          <th></th>
+            <th>商品名</th>
+            <th>価格</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>操作</th>
         </tr>
-      </thead>
+    </thead>
 
     <tbody>
-      <tr th:each="cart : ${cartItems}">
+    <tr th:each="cart : ${cartItems}">
         <td th:text="${cart.product.name}"></td>
-        <td th:text="${cart.product.price}"></td>
+        <td th:text="${cart.product.price} + '円'"></td>
         <td>
-          <form th:action="@{/cart/update}" method="post">
-            <input type="hidden" name="cartId" th:value="${cart.id}">
-            <input type="number" name="quantity" th:value="${cart.quantity}" min="1">
-           <button type="submit">更新</button> 
-        </form>
+            <form th:action="@{/cart/update}" method="post">
+                <input type="hidden"
+                       name="cartId"
+                       th:value="${cart.id}">
+                <input type="number"
+                       name="quantity"
+                       th:value="${cart.quantity}"
+                       min="1">
+                <button type="submit">更新</button>
+            </form>
         </td>
+        <td th:text="${cart.product.price * cart.quantity} + '円'"></td>
         <td>
-          <form th:action="@{/cart/delete}" method="post">
-            <input type="hidden" name="cartId" th:value="${cart.id}">
-            <button type="submit">削除</button>
-          </form>
+            <form th:action="@{/cart/delete}" method="post">
+                <input type="hidden"
+                       name="cartId"
+                       th:value="${cart.id}">
+                <button type="submit">削除</button>
+            </form>
         </td>
-      </tr>
+    </tr>
     </tbody>
-    </table>
-    <br>
-    <a th:href="@{/products}">戻る</a>
-    <button>購入へ進む</button>
-  </body>
+</table>
 
+<br>
+<a th:href="@{/products}">
+    商品一覧へ戻る
+</a>
+<a th:href="@{/orders}">
+    購入へ進む
+</a>
+</body>
 </html>
