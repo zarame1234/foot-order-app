@@ -38,6 +38,14 @@ public class OrderService {
     // 注文後はカートを空にする
     cartRepository.deleteAll();
   }
+
+  /**
+   * 注文履歴一覧を取得する
+   * @return 注文履歴一覧
+   */
+  public List<Order> getOrderList() {
+    return orderRepository.findAll();
+  }
 }
   
   /*
