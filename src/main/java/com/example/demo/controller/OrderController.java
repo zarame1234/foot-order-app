@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.example.demo.entity.Order;
 
 
+/*注文履歴
 @RestController
 public class OrderController {
 
@@ -24,4 +25,5 @@ public class OrderController {
       model.addAttribute("orders", orders);
       return "orders";
   }
+*/
 }

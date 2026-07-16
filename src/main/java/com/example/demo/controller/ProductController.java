@@ -41,12 +41,6 @@ public class ProductController {
     return "product-detail";
   } 
 
-  @PostMapping("/cart/update")
-  public String updateCart(@ModelAttribute UpdateCartForm updateCartForm) {
-    cartService.updateCart(updateCartForm);
-    return "redirect:/cart";
-  }
-
   /*商品登録は別で作成予定
   @PostMapping("/products")
   public String saveProduct(ProductForm  productForm) {
