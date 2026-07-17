@@ -32,8 +32,11 @@ public class ProductController {
   @GetMapping("/products/{id}")
     public  String showProductDatail(@PathVariable Long id, Model model) {
       model.addAttribute("product", productService.getProductById(id));
-      model.addAttribute("cartForm", new CartForm());
-    return "product-detail";
+     
+      CartForm cartForm = new CartForm();
+      cartForm.setProductId(id);
+      model.addAttribute("cartForm", cartForm);
+      return "product-detail";
   } 
 
   /*商品登録は別で作成予定
