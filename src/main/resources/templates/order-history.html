@@ -2,30 +2,35 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>注文履歴</title>
 </head>
 <body>
-  <h1>注文履歴</h1>
-  <table border="1">
-    <thead>
-      <tr>
-        <th>商品名</th>
-        <th>数量</th>
-        <th>注文日時</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr th:each="order : ${orders}">
-        <td th:text="${order.product.name}"></td>
-        <td th:text="${order.quantity}"></td>
-        <td th:text="${order.orderDate}"></td>"
-      </tr>
-    </tbody>
-  </table>
+  <div class="container mt-4">
+  <div th:replace="~{fragments/header :: header}"></div>
+    <hr>
+    <h1 class="mb-4">注文履歴</h1>
+    <table class="table table-hover align-middle">
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>数量</th>
+          <th>注文日時</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="order : ${orders}">
+          <td th:text="${order.product.name}"></td>
+          <td th:text="${order.quantity}"></td>
+          <td th:text="${#temporals.format(order.orderDate,'yyyy/MM/dd HH:mm')}"></td>
+        </tr>
+      </tbody>
+    </table>
 
-  <a th:href="@{/products}">      
-    <button type="button">商品一覧へ戻る</button>
-  </a>
-
+    <a th:href="@{/products}" class="btn btn-primary">      
+      商品一覧へ戻る
+    </a>
+  </div>
+  </div>
 </body>
 </html>
