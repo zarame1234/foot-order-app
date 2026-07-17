@@ -13,8 +13,10 @@
   <!-- 共通ヘッダー -->
   <div th:replace="~{fragments/header :: header}"></div>
 
-  <h1>商品詳細</h1>
-  <div class="card p-4">
+  <h1 class="mb-4">商品詳細</h1>
+  <div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card p-4">
     <form th:action = "@{/cart}" th:object="${cartForm}" method="post">
     <input type = "hidden" th:field = "*{productId}">
 
@@ -30,7 +32,11 @@
     </button>
     </form>
 
-    <a th:href="@{/products}">一覧へ戻る</a>
+    <a th:href="@{/products}" class="btn btn-outline-secondary mt-3">
+      一覧へ戻る
+    </a>
+  </div>
+  </div>
   </div>
   </div>
 </body>
