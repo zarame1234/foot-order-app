@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
 @Controller
 public class OrderController {
   private final CartService cartService;
@@ -20,8 +21,8 @@ public class OrderController {
    */
   @GetMapping("/orders")
   public String showOrder(Model model) {
-    model.addAttribute("cartItems",
-    cartService.getCartList());
+    model.addAttribute("cartItems",cartService.getCartList());
+    model.addAttribute("totalPrice", cartService.getTotalPrice());
     return "order";
   }
 
