@@ -8,37 +8,35 @@
 </head>
 
 <body>
-  <div class="container mt-4">
-
   <!-- 共通ヘッダー -->
   <div th:replace="~{fragments/header :: header}"></div>
 
-  <h1 class="mb-4">商品詳細</h1>
-  <div class="row justify-content-center">
-  <div class="col-md-6">
-    <div class="card p-4">
-    <form th:action = "@{/cart}" th:object="${cartForm}" method="post">
-      <input type = "hidden" th:field = "*{productId}" th:value="${product.id}">
+  <div class="container mt-4">
+    <h1 class="mb-4">商品詳細</h1>
 
-    <h5>商品名</h5>
-    <p th:text="${product.name}"></p>
-    <h5>価格</h5>
-    <p th:text="${product.price} + '円'"></p>
-    <h5>数量</h5>
-    <input type="number" th:field="*{quantity}" class="form-control" min="1">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card p-4">
+          <form th:action = "@{/cart}" th:object="${cartForm}" method="post">
+            <input type = "hidden" th:field = "*{productId}" th:value="${product.id}">
+            <h5>商品名</h5>
+            <p th:text="${product.name}"></p>
+            <h5>価格</h5>
+            <p th:text="${product.price} + '円'"></p>
+            <h5>数量</h5>
+            <input type="number" th:field="*{quantity}" class="form-control" min="1">
 
-    <button type="submit" class="btn btn-primary">
-      カートに追加
-    </button>
-    </form>
+            <button type="submit" class="btn btn-primary">
+              カートに追加
+            </button>
+          </form>
 
-    <a th:href="@{/products}" class="btn btn-outline-secondary mt-3">
-      一覧へ戻る
-    </a>
-  </div>
-  </div>
-  </div>
+          <a th:href="@{/products}" class="btn btn-outline-secondary mt-3">
+           一覧へ戻る
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
-
 </html>

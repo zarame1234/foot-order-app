@@ -7,63 +7,64 @@
 </head>
 
 <body>
-<div class="container mt-4">
-<div th:replace="~{fragments/header :: header}"></div>
-<hr>
-<h1 class="mb-4">カート一覧</h1>
-<form th:action="@{/cart/deleteAll}" method="post"
+  <!-- 共通ヘッダー -->
+  <div th:replace="~{fragments/header :: header}"></div>
+  
+  <div class="container mt-4">
+    <h1 class="mb-4">カート一覧</h1>
+    <form th:action="@{/cart/deleteAll}" method="post"
       onsubmit="return confirm('カート内の商品をすべて削除しますか？');">
-    <button type="submit" class="btn btn-outline-danger mb-3">
-      カートクリア
-    </button>
-</form>
+      <button type="submit" class="btn btn-outline-danger mb-3">
+        カートクリア
+      </button>
+    </form>
 
-<table class="table table-hover align-middle">
-    <thead>
+    <table class="table table-hover align-middle">
+      <thead>
         <tr>
-            <th>商品名</th>
-            <th>価格</th>
-            <th>数量</th>
-            <th>小計</th>
-            <th>操作</th>
+          <th>商品名</th>
+          <th>価格</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>操作</th>
         </tr>
-    </thead>
+      </thead>
 
-    <tbody>
-    <tr th:each="cart : ${cartItems}">
-      <td th:text="${cart.product.name}"></td>
-      <td th:text="${cart.product.price} + '円'"></td>
-      <td>
-        <form th:action="@{/cart/update}" method="post">
-            <input type="hidden" name="cartId" th:value="${cart.id}">
-            <input type="number" name="quantity" th:value="${cart.quantity}" class="form-control" style="width:80px;" min="1">
-            <button type="submit" class="btn btn-sm btn-primary">
-              更新
-            </button>
-        </form>
-      </td>
-      <td th:text="${cart.product.price * cart.quantity} + '円'"></td>
-      <td>
-        <form th:action="@{/cart/delete}" method="post">
-          <input type="hidden" name="cartId" th:value="${cart.id}">
-          <button type="submit" class="btn btn-sm btn-danger">
-            削除
-          </button>
-        </form>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+      <tbody>
+        <tr th:each="cart : ${cartItems}">
+          <td th:text="${cart.product.name}"></td>
+          <td th:text="${cart.product.price} + '円'"></td>
+          <td>
+            <form th:action="@{/cart/update}" method="post">
+              <input type="hidden" name="cartId" th:value="${cart.id}">
+              <input type="number" name="quantity" th:value="${cart.quantity}" class="form-control" style="width:80px;" min="1">
+              <button type="submit" class="btn btn-sm btn-primary">
+                更新
+              </button>
+            </form>
+          </td>
+          <td th:text="${cart.product.price * cart.quantity} + '円'"></td>
+          <td>
+            <form th:action="@{/cart/delete}" method="post">
+              <input type="hidden" name="cartId" th:value="${cart.id}">
+                <button type="submit" class="btn btn-sm btn-danger">
+                  削除
+                </button>
+            </form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-  <br>
-  <div class="d-flex justify-content-between mt-4">
-    <a th:href="@{/products}" class="btn btn-outline-secondary">
-      商品一覧へ戻る
-    </a>
-    <a th:href="@{/orders}" class="btn btn-success">
-      購入へ進む
-    </a>
-  </div>
+    <br>
+    <div class="d-flex justify-content-between mt-4">
+      <a th:href="@{/products}" class="btn btn-outline-secondary">
+        商品一覧へ戻る
+      </a>
+      <a th:href="@{/orders}" class="btn btn-success">
+        購入へ進む
+      </a>
+    </div>
 </div>
 </body>
 </html>
