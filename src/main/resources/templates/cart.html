@@ -2,17 +2,23 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>カート</title>
 </head>
 
 <body>
-<h1>カート一覧</h1>
+<div class="container mt-4">
+<div th:replace="~{fragments/header :: header}"></div>
+<hr>
+<h1 class="mb-4">カート一覧</h1>
 <form th:action="@{/cart/deleteAll}" method="post"
       onsubmit="return confirm('カート内の商品をすべて削除しますか？');">
-    <button type="submit">カートクリア</button>
+    <button type="submit" class="btn btn-outline-danger mb-3">
+      カートクリア
+    </button>
 </form>
 
-<table border="1">
+<table class="table table-hover align-middle">
     <thead>
         <tr>
             <th>商品名</th>
@@ -30,15 +36,19 @@
       <td>
         <form th:action="@{/cart/update}" method="post">
             <input type="hidden" name="cartId" th:value="${cart.id}">
-            <input type="number" name="quantity" th:value="${cart.quantity}" min="1">
-            <button type="submit">更新</button>
+            <input type="number" name="quantity" th:value="${cart.quantity}" class="form-control" style="width:80px;" min="1">
+            <button type="submit" class="btn btn-sm btn-primary">
+              更新
+            </button>
         </form>
       </td>
       <td th:text="${cart.product.price * cart.quantity} + '円'"></td>
       <td>
         <form th:action="@{/cart/delete}" method="post">
           <input type="hidden" name="cartId" th:value="${cart.id}">
-          <button type="submit">削除</button>
+          <button type="submit" class="btn btn-sm btn-danger">
+            削除
+          </button>
         </form>
       </td>
     </tr>
@@ -46,11 +56,14 @@
   </table>
 
   <br>
-  <a th:href="@{/products}">
-    商品一覧へ戻る
-  </a>
-  <a th:href="@{/orders}">
-    購入へ進む
-  </a>
+  <div class="d-flex justify-content-between mt-4">
+    <a th:href="@{/products}" class="btn btn-outline-secondary">
+      商品一覧へ戻る
+    </a>
+    <a th:href="@{/orders}" class="btn btn-success">
+      購入へ進む
+    </a>
+  </div>
+</div>
 </body>
 </html>
