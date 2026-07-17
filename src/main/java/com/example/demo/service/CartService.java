@@ -66,4 +66,16 @@ public class CartService {
   public void deleteAllCart() {
     cartRepository.deleteAll();
   }
+
+  /**
+   * 合計金額取得
+   */
+  public Integer getTotalPrice() {
+    List<Cart> cartItems = cartRepository.findAll();
+    int totalPrice = 0;
+    for (Cart cart : cartItems) {
+      totalPrice += cart.getProduct().getPrice() * cart.getQuantity();
+    }
+    return totalPrice;
+  }
 }

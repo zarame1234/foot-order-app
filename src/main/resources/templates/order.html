@@ -2,16 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <var><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"></var>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"></var>
     <title>注文確認画面</title>
 </head>
 
 <body>
-  <div class="container mt-4"></div>
+  <div class="container mt-4">
     <div th:replace="~{fragments/header :: header}"></div>
     <hr>
     <h1>注文確認</h1>
-    <table border="1">
+    <table class="table table-hover align-middle">
       <thead>
         <tr>
             <th>商品名</th>
