@@ -36,8 +36,13 @@
           <td th:text="${cart.product.price} + '円'"></td>
           <td>
             <form th:action="@{/cart/update}" method="post">
+
               <input type="hidden" name="cartId" th:value="${cart.id}">
-              <input type="number" name="quantity" th:value="${cart.quantity}" class="form-control" style="width:80px;" min="1">
+
+              <input type="number" name="quantity" th:value="${cart.quantity}"
+                     class="form-control"
+                     style="width:80px;" min="1">
+                
               <button type="submit" class="btn btn-sm btn-primary">
                 更新
               </button>

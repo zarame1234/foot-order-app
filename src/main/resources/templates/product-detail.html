@@ -18,14 +18,15 @@
       <div class="col-md-6">
         <div class="card p-4">
           <form th:action = "@{/cart}" th:object="${cartForm}" method="post">
-            <input type = "hidden" th:field = "*{productId}" th:value="${product.id}">
+            <input type = "hidden" th:field = "*{productId}">
             <h5>商品名</h5>
             <p th:text="${product.name}"></p>
             <h5>価格</h5>
             <p th:text="${product.price} + '円'"></p>
             <h5>数量</h5>
-            <input type="number" th:field="*{quantity}" class="form-control" min="1">
-
+            <input type="number" th:field="*{quantity}" class="form-control"
+                   th:classappend="${#fields.hasErrors('quantity')} ? ' is-invalid' : ''">
+           <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></div>
             <button type="submit" class="btn btn-primary">
               カートに追加
             </button>
