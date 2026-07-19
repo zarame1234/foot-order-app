@@ -40,8 +40,10 @@
               <input type="hidden" name="cartId" th:value="${cart.id}">
 
               <input type="number" name="quantity" th:value="${cart.quantity}"
-                     class="form-control"
-                     style="width:80px;" min="1">
+                     class="form-control" style="width:80px;">
+              <div class="text-danger" th:if="${errorMessage != null}"
+                   th:text="${errorMessage}">
+              </div>
                 
               <button type="submit" class="btn btn-sm btn-primary">
                 更新

@@ -64,8 +64,13 @@ public class CartController {
  * カート内商品の数量変更
  */
   @PostMapping("/cart/update")
-  public String updateCart(@ModelAttribute UpdateCartForm form, Model model) {
+  public String updateCart(@Valid @ModelAttribute UpdateCartForm form, BindingResult result, Model model) {
+    if (result.hasErrors()) {
+      model.addAttribute("cartItems", cartService.getCartList());
+      model.addAttribute("errorMessage",result.getFieldError("quantity").getDefaultMessage());
+      return "cart";
 
+    }
     cartService.updateCart(form);
     return "redirect:/cart";
 }
